@@ -87,8 +87,8 @@ MSNA = MSNA[ind]
 nerve_on = nerve_on[ind]
 #rint('after_sort')
 
-bin_counter(rounded_dbp, MSNA, nerve_on, bin_width=1)
-
+n_beats, bp = bin_counter(rounded_dbp, MSNA, nerve_on, bin_width=1)
+print(n_beats)
 """
 for i in range(25):
     print(i, rounded_dbp[i], MSNA[i], nerve_on[i])
