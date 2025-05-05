@@ -26,6 +26,12 @@ class Biomechanics:
             (self.n_cols - 1) / 3 / self.n_vars)  # drop first col, divide by 3 (x,y,z) then divide by # variables in file
         self.v3d = pd.DataFrame(data, columns=self.var_name)
 
+    def get_stance(self):
+        self.v3d.Lf, self.v3d.Lf_rf = zero_crossing(self.v3d.FP1_Z, 16, 0, self.n_rows-1)
+        self.v3d.Rt, self.v3d.Rt_rf = zero_crossing(self.v3d.FP2_Z, 16, 0, self.n_rows-1)
+
+    def plot_first_step(self):
+        plt.plot(self.v3d.FP1_Z, 'r', label='FP1 Z')
     def plot_fz(self):
         plt.plot(self.v3d.FP2_Z, 'r', label='FP2 Z')
         plt.plot(self.v3d.FP1_Z, 'b', label='FP1 Z')
